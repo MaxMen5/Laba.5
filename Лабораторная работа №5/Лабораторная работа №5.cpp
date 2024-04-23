@@ -167,7 +167,7 @@ struct HashSet {
         counting = 0;
     }
 
-    string* toArray() {
+    string* ToArray() {
         string* str = new string[counting];
         int k = 0;
         for (int i = 0; i < EN; i++) {
@@ -213,7 +213,7 @@ int main() {
             cout << "Количество слов: " << hash.count() << endl;
             break;
         case 6:
-            str1 = hash.toArray(); 
+            str1 = hash.ToArray(); 
             for (int i = 0; i < hash.count(); i++) { cout << str1[i] << " "; }
             cout << endl;
             break;
