@@ -1,9 +1,8 @@
-﻿#include <iostream>
+#include <iostream>
 using namespace std;
 const int EN = 26;
 
 void instruction() {
-    cout << "   Элементы должны содержать только символы латинского языка!\n";
     cout << "1 - Добавление элемента в хеш-множество\n";
     cout << "2 - Удаление элемента из хеш-множества\n";
     cout << "3 - Удаление всех элементов хеш-множества\n";
@@ -132,8 +131,7 @@ struct HashSet {
     int count() { return counting; }
 
     int hashfoo(string str) {
-        if (str[0] - 65 < EN) { return str[0] - 65; }
-        else { return str[0] - 97; }
+        return (int)str[0] % EN;
     }
 
     void add(string str) {
@@ -151,13 +149,11 @@ struct HashSet {
 
     void remove(string str) {
         if (!contains(str)) { return; }
-        else {
-            for (int i = 0; i < hash[hashfoo(str)].count(); i++) {
-                if (hash[hashfoo(str)].elementAt(i) == str) {
-                    hash[hashfoo(str)].removeAt(i);
-                    counting--;
-                    return;
-                }
+        for (int i = 0; i < hash[hashfoo(str)].count(); i++) {
+            if (hash[hashfoo(str)].elementAt(i) == str) {
+                hash[hashfoo(str)].removeAt(i);
+                counting--;
+                return;
             }
         }
     }
