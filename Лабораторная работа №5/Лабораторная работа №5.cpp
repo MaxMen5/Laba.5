@@ -131,7 +131,7 @@ struct HashSet {
     int count() { return counting; }
 
     int hashfoo(string str) {
-        return (int)str[0] % EN;
+        return abs((int)str[0] % EN);
     }
 
     void add(string str) {
