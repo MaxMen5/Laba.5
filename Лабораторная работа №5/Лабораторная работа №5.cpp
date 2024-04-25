@@ -141,17 +141,19 @@ struct HashSet {
     }
 
     bool contains(string str) {
-        for (int i = 0; i < hash[hashfoo(str)].count(); i++) {
-            if (hash[hashfoo(str)].elementAt(i) == str) { return true; }
+        int index = hashfoo(str);
+        for (int i = 0; i < hash[index].count(); i++) {
+            if (hash[index].elementAt(i) == str) { return true; }
         }
         return false;
     }
 
     void remove(string str) {
         if (!contains(str)) { return; }
-        for (int i = 0; i < hash[hashfoo(str)].count(); i++) {
-            if (hash[hashfoo(str)].elementAt(i) == str) {
-                hash[hashfoo(str)].removeAt(i);
+        int index = hashfoo(str);
+        for (int i = 0; i < hash[index].count(); i++) {
+            if (hash[index].elementAt(i) == str) {
+                hash[index].removeAt(i);
                 counting--;
                 return;
             }
